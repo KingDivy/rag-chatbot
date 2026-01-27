@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <div class="bg-gradient"></div>
+
+    <div class="main-layout">
+        
+        <header class="top-nav">
+            <div class="brand">
+                <span class="sparkle-icon">✨</span>
+                <h3>Company Chatbot</h3>
+            </div>
+            <div class="nav-controls">
+                <button class="nav-btn"><i class="ph ph-clock-counter-clockwise"></i></button>
+                <div class="user-avatar">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQHQ4WLtcQP9ZQ/profile-displayphoto-shrink_400_400/B4DZafRleRHQAg-/0/1746428910741?e=1770854400&v=beta&t=ALk_VRgBICyQ9N-ARjytHjMTKD3XgZPQsoxsxWaiJtM" alt="User">
+                </div>
+            </div>
+        </header>
+
+        <div class="chat-scroll-area">
+            <div class="chat-content">
+                
+                {% if not chat_history %}
+                <div class="welcome-screen">
+                    <h1>Hello, Divy.</h1>
+                    <p>How can I help you explore today?</p>
+                </div>
+                {% endif %}
+
+                {% if chat_history %}
+                    {% for msg in chat_history %}
+                        {% if msg.role == "user" %}
+                            <div class="message-row user-row">
+                                <div class="message-bubble user-bubble">
+                                    {{ msg.text }}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="message-row bot-row">
+                                <div class="bot-icon">
+                                    <i class="ph ph-sparkle"></i>
+                                </div>
+                                <div class="message-bubble bot-bubble">
+                                    {{ msg.text }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                
+                <div class="scroll-spacer"></div>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <form class="input-glass-box" action="/chat" method="POST">
+                
+                <button type="button" class="icon-btn">
+                    <i class="ph ph-plus"></i>
+                </button>
+                
+                <input 
+                    type="text" 
+                    name="question" 
+                    placeholder="Ask anything..." 
+                    autocomplete="off"
+                    required
+                >
+                
+                <button type="submit" class="send-btn">
+                    <i class="ph ph-arrow-up"></i>
+                </button>
+            </form>
+            <p class="disclaimer">AI can make mistakes. Please check important info.</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Auto-scroll to bottom
+        const chatContainer = document.querySelector('.chat-scroll-area');
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    </script>
+
+</body>
+</html>
