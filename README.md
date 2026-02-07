@@ -1,179 +1,182 @@
-# RAG Chatbot – Flask • LangChain • Gemini • Docker • AWS
+# 📘 RAG Chatbot – Flask • LangChain • Gemini • Docker • AWS
 
-An end-to-end Retrieval-Augmented Generation (RAG) chatbot built using Flask, LangChain, Google Gemini, and HuggingFace embeddings, deployed using Docker and AWS (ECR + EC2).
+An end-to-end **Retrieval-Augmented Generation (RAG) chatbot** built using **Flask**, **LangChain**, **Google Gemini**, and **HuggingFace embeddings**, deployed with **Docker** on **AWS (ECR + EC2)**.
 
-This chatbot allows users to ask questions based on uploaded PDF documents and get accurate, context-aware answers.
+This chatbot allows users to ask questions based on uploaded PDF documents and receive accurate, context-aware answers.
 
-🚀 Features
+---
 
-📄 PDF document ingestion
+## 🚀 Features
 
-🔍 Semantic search using vector embeddings
+- 📄 PDF document ingestion  
+- 🔍 Semantic search using vector embeddings  
+- 🧠 Context-aware answers using RAG  
+- 💬 Conversational memory support  
+- 🎨 Clean and modern chat UI  
+- 🐳 Dockerized application  
+- ☁️ CI/CD pipeline using GitHub Actions  
+- 🚀 Deployment on AWS EC2 via Amazon ECR  
 
-🧠 Context-aware answers using RAG
+---
 
-💬 Conversational memory support
+## 🛠️ Tech Stack
 
-🎨 Clean and modern chat UI
+**Backend**
+- Python
+- Flask
+- LangChain
+- Google Gemini API
+- HuggingFace Embeddings
 
-🐳 Dockerized application
+**Frontend**
+- HTML
+- CSS
+- Jinja2
 
-☁️ CI/CD pipeline using GitHub Actions
+**DevOps**
+- Docker
+- GitHub Actions
+- AWS EC2
+- Amazon ECR
 
-🚀 Deployment on AWS EC2 via Amazon ECR
+---
 
-🛠️ Tech Stack
+## 📂 Project Structure
 
-Backend
-
-Python
-
-Flask
-
-LangChain
-
-Google Gemini API
-
-HuggingFace Embeddings
-
-Pinecone / Vector Store (if enabled)
-
-Frontend
-
-HTML
-
-CSS (custom modern UI)
-
-Jinja2 Templates
-
-DevOps
-
-Docker
-
-GitHub Actions (CI/CD)
-
-AWS EC2
-
-Amazon ECR
-
-📂 Project Structure
+```
 rag-chatbot/
 │
-├── app.py                  # Flask app entry point
-├── Dockerfile              # Docker configuration
-├── requirements.txt        # Python dependencies
+├── app.py
+├── Dockerfile
+├── requirements.txt
 ├── setup.py
 │
-├── data/                   # PDF documents
+├── data/
 │
 ├── src/
-│   ├── helper.py           # PDF loading & preprocessing
-│   ├── store_index.py      # Vector store & embeddings
-│   ├── prompt.py           # Prompt templates
-│   ├── memory.py           # Conversation memory
+│   ├── helper.py
+│   ├── store_index.py
+│   ├── prompt.py
+│   ├── memory.py
 │
 ├── templates/
-│   └── index.html          # Chat UI
+│   └── index.html
 │
 ├── static/
-│   └── style.css           # Styling
+│   └── style.css
 │
 ├── research/
-│   └── trials.ipynb        # Experimentation notebook
+│   └── trials.ipynb
 │
 └── .github/workflows/
-    └── cicd.yaml           # CI/CD pipeline
+    └── cicd.yaml
+```
 
-⚙️ Installation & Setup (Local)
-1️⃣ Clone the Repository
+---
+
+## ⚙️ Local Setup
+
+### 1. Clone Repository
+
+```bash
 git clone https://github.com/KingDivy/rag-chatbot.git
 cd rag-chatbot
+```
 
-2️⃣ Create Virtual Environment (Optional)
-python -m venv venv
-source venv/bin/activate   # Linux / Mac
-venv\Scripts\activate      # Windows
+### 2. Install Dependencies
 
-3️⃣ Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
-4️⃣ Environment Variables
+### 3. Environment Variables
 
-Create a .env file:
+Create a `.env` file:
 
+```env
 GOOGLE_API_KEY=your_gemini_api_key
+```
 
-5️⃣ Run the App
+### 4. Run Application
+
+```bash
 python app.py
+```
 
+Open:
 
-Open browser:
-
+```
 http://localhost:5000
+```
 
-🐳 Docker Setup
-Build Image
+---
+
+## 🐳 Docker Usage
+
+### Build Image
+
+```bash
 docker build -t rag-chatbot .
+```
 
-Run Container
+### Run Container
+
+```bash
 docker run -d -p 5000:5000 rag-chatbot
+```
 
+---
 
-Access:
+## ☁️ AWS Deployment
 
-http://localhost:5000
-
-☁️ AWS Deployment (EC2 + ECR)
-
-Docker image is built and pushed to Amazon ECR
-
-EC2 pulls the image and runs the container
-
-CI/CD automated using GitHub Actions
+- Docker image is pushed to **Amazon ECR**
+- EC2 pulls and runs the container
+- CI/CD automated via GitHub Actions
 
 Ensure:
+- Port **5000** allowed in EC2 Security Group
+- Flask runs with `host="0.0.0.0"`
 
-EC2 security group allows port 5000 (or 80)
-
-Flask runs with host="0.0.0.0"
-
+```python
 app.run(host="0.0.0.0", port=5000)
+```
 
-🔄 CI/CD Pipeline
+---
 
-Triggered on every push to main:
+## 🔄 CI/CD
 
-Build Docker image
-
-Push image to Amazon ECR
-
-Deploy container on EC2
+- Triggered on push to `main`
+- Builds Docker image
+- Pushes image to ECR
+- Deploys to EC2
 
 Workflow file:
 
+```
 .github/workflows/cicd.yaml
+```
 
-📸 Screenshots
+---
 
-(Add UI screenshots here once ready)
+## 👤 Author
 
-🧠 Future Improvements
+**Divy Desai**  
+GitHub: [@KingDivy](https://github.com/KingDivy)
 
-🔐 Authentication
+---
 
-📤 File upload via UI
+## 📄 License
 
-📊 Chat history persistence
+This project is licensed under the **Apache License 2.0**.
 
-🌍 Multi-document support
+You may obtain a copy of the License at:
 
-⚡ Streaming responses
+```
+http://www.apache.org/licenses/LICENSE-2.0
+```
 
-👤 Author
+Unless required by applicable law or agreed to in writing, software  
+distributed under the License is distributed on an **"AS IS" BASIS**,  
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.
 
-Divy Desai
-GitHub: @KingDivy
-
-📄 License
-
-This project is licensed under the MIT License.
+---
