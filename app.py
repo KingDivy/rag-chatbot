@@ -1,3 +1,6 @@
+print("APP STARTING...")
+
+
 from flask import Flask, render_template, request
 
 from src.helper import load_pdf_file, filter_short_documents, text_spliting
@@ -68,6 +71,9 @@ def chat():
         answer=response,
         chat_history=chat_history
     )
+
+
+print("FLASK ABOUT TO RUN")
 
 
 if __name__ == "__main__":
