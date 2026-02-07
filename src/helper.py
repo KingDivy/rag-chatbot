@@ -1,5 +1,5 @@
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitter import RecursiveCharacterTextSplitter
 from typing import List
 from langchain_core.documents import Document
 import os
