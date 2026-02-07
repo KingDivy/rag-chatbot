@@ -1,18 +1,16 @@
 flask
+python-dotenv
 
-langchain
+langchain>=0.2.0
 langchain-core
 langchain-community
-
-langchain-google-genai
-google-generativeai
-
+langchain-text-splitters
 langchain-huggingface
+langchain-pinecone
+langchain-google-genai
+
 sentence-transformers
 torch
 
-langchain-pinecone
 pinecone-client
-
 pypdf
-python-dotenv
