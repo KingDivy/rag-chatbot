@@ -1,16 +1,17 @@
-flask
-python-dotenv
+flask==3.1.1
+python-dotenv==1.1.1
+gunicorn==23.0.0
 
-langchain>=0.2.0
-langchain-core
-langchain-community
-langchain-text-splitters
-langchain-huggingface
-langchain-pinecone
-langchain-google-genai
+langchain==0.3.26
+langchain-core==0.3.68
+langchain-community==0.3.27
+langchain-text-splitters==0.3.8
+langchain-huggingface==0.3.0
+langchain-google-genai==2.1.8
+langchain-pinecone==0.2.8
 
-sentence-transformers
-torch
+sentence-transformers==5.0.0
+torch==2.7.1
 
-pinecone-client
-pypdf
+pinecone-client==5.0.1
+pypdf==5.6.1
