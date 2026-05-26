@@ -1,7 +1,7 @@
 import torch
 from langchain_huggingface import HuggingFaceEmbeddings
 
-from langchain_pinecone import PineconeVectorStore
+from langchain_community.vectorstores import Pinecone
 
 
 def download_embeddings():
@@ -16,7 +16,7 @@ def download_embeddings():
 def store_index(text_chunks, embedding, index_name):
 
     # ✅ ONLY FIX: documents= instead of text_chunks=
-    docstore = PineconeVectorStore.from_documents(
+    docstore = Pinecone.from_documents(
         documents=text_chunks,
         embedding=embedding,
         index_name=index_name
